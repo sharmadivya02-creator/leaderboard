@@ -1,19 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root {
-  --bg-dark: #09090b;
-  --bg-gradient-start: #18181b;
-  --bg-gradient-end: #09090b;
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-hover: rgba(255, 255, 255, 0.08);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --accent-gold: #fbbf24;
-  --accent-silver: #cbd5e1;
-  --accent-bronze: #b45309;
-  --accent-blue: #38bdf8;
-  --accent-purple: #c084fc;
+  --bg-dark: #000000;
+  --bg-gradient-start: #000000;
+  --bg-gradient-end: #0a0a0a;
+  --glass-bg: #111111;
+  --glass-hover: #222222;
+  --glass-border: #33ff00;
+  --text-primary: #33ff00;
+  --text-secondary: #00ffcc;
+  --accent-gold: #ffea00;
+  --accent-silver: #cccccc;
+  --accent-bronze: #cd7f32;
+  --accent-blue: #00f3ff;
+  --accent-purple: #ff00ff;
+  --accent-red: #ff003c;
 }
 
 * {
@@ -23,11 +24,13 @@
 }
 
 body {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Press Start 2P', monospace;
   background-color: var(--bg-dark);
+  /* pixelated grid/scanline effect */
   background-image: 
-    radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.08), transparent 25%),
-    radial-gradient(circle at 85% 30%, rgba(192, 132, 252, 0.08), transparent 25%);
+    linear-gradient(rgba(0, 255, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 0, 0.05) 1px, transparent 1px);
+  background-size: 4px 4px;
   color: var(--text-primary);
   min-height: 100vh;
   display: flex;
@@ -35,21 +38,28 @@ body {
   align-items: center;
   padding: 2rem;
   overflow-x: hidden;
+  /* Text shadow for a slight CRT glow effect */
+  text-shadow: 2px 2px 0px rgba(0,0,0,1), 0 0 5px var(--text-primary);
 }
 
 /* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
 }
 
 @keyframes pulse-glow {
-  0% { text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
-  50% { text-shadow: 0 0 20px rgba(56, 189, 248, 0.8), 0 0 30px rgba(192, 132, 252, 0.6); }
-  100% { text-shadow: 0 0 10px rgba(56, 189, 248, 0.5); }
+  0% { color: var(--accent-blue); text-shadow: 0 0 5px var(--accent-blue); }
+  50% { color: var(--accent-purple); text-shadow: 0 0 5px var(--accent-purple); }
+  100% { color: var(--accent-blue); text-shadow: 0 0 5px var(--accent-blue); }
 }
 
 @keyframes slideIn {
   from { transform: translateX(-20px); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
+}
+
+/* Base link and text styles */
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
 }
